@@ -3,7 +3,7 @@
 BASEDIR=$(dirname "$0")
 
 #install python stuff
-sudo apt-get install python3-pip python3-virtualenv
+sudo apt-get install python3-pip python3-virtualenv -y
 
 #create venv
 python3 -m venv $BASEDIR/demcnn_venv
