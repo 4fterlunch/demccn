@@ -2,17 +2,28 @@
 # Michael Holmes 2019
 # mkhlib@outlook.com
 
-import georasters as gr
+import rasterio as rio
+from rasterio.plot import show
+from rasterio.mask import mask
+import pycrs
+from shapely.geometry import box
+import geopandas as gpd
+from fiona.crs import from_epsg
+import sys
 
-# load a raster file and return as a pandas data frame
-def load_to_pandas(ras):
-    if ras is not None:
-        data = gr.from_file(ras)
-        df = data.to_pandas()
-        return df
+class terrain:
 
-def load_raster(ras):
-    if ras is not None:
-        return  gr.from_file(ras)
+    def __init__(self, path_to_raster):
+        self.__raw = self.__load_raster(path_to_raster)
 
-def
+    def __load_raster(self, ras):
+        if ras is not None:
+            return  rio.open(ras)
+
+    def plot(self):
+        show((self.__raw), cmap='terrain')
+
+
+test = terrain(sys.argv[1])
+test.plot()
+
