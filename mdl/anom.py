@@ -1,5 +1,7 @@
 import os
 import shutil
+import numpy as np
+import urllib.request
 
 class anom:
     def __init__(self, name):
@@ -20,6 +22,11 @@ class anom:
         if os.path.exists(self.path):
             shutil.rmtree(self.path)
             print(self.path, 'removed')
+        else:
+            print('nothing to delete!')
+
+    def load_images_from_file(self, path):
+        pass
 
 def main():
     test = anom('test')
